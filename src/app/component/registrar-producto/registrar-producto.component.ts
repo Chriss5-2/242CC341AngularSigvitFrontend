@@ -23,6 +23,7 @@ export class RegistrarProductoComponent {
 
   constructor(private productoService:ProductoService){
     this.productoForm = new FormGroup({
+      idProducto: new FormControl(''),
       descripcion: new FormControl('', [Validators.required,Validators.minLength(2)]),
       nombre: new FormControl('', [Validators.required,Validators.minLength(2)]),
       precioVenta: new FormControl('1',[Validators.required, Validators.min(1)]),
@@ -35,6 +36,7 @@ export class RegistrarProductoComponent {
   }
   
   ngOnInit():void{
+    this.productoForm.reset();
     this.getProductos();
   }
   getProductos():void{
@@ -45,6 +47,7 @@ export class RegistrarProductoComponent {
     });
   }
   setProducto():void{
+    this.productoRequest.idProducto=this.productoForm.get('idProducto')?.value;
     this.productoRequest.descripcion=this.productoForm.get('descripcion')?.value;
     this.productoRequest.nombre=this.productoForm.get('nombre')?.value;
     this.productoRequest.precioVenta=this.productoForm.get('precioVenta')?.value;
@@ -60,7 +63,7 @@ export class RegistrarProductoComponent {
     console.log('registrando Producto');
     this.setProducto();
     this.productoService.registrarProducto(this.productoRequest).subscribe((result: any)=>{
-      console.log('registrarProducto',result),
+      console.log('registrarProducto', result),
       this.ngOnInit();
       Swal.close();
       Swal.fire({
@@ -81,7 +84,29 @@ export class RegistrarProductoComponent {
 
   editarProducto(productoResponse: IProductoResponse):void{console.log('editando persona');}
 
-  eliminarProducto(productoResponse: IProductoResponse):void{console.log('eliminando producto')}
+  eliminarProducto(productoResponse: IProductoResponse):void{
+    console.log('eliminando producto');
+    this.productoRequest.idProducto=productoResponse.idProducto;
+
+    this.productoService.eliminarProducto(this.productoRequest).subscribe((result: any)=>{
+      console.log('eliminarProducto', result),
+      this.ngOnInit();
+      Swal.close();
+      Swal.fire({
+        icon:'success',
+        title:'eliminarProducto....',
+        text:'Se elimino existosamente el producto',
+    });
+    },(err:any)=>{
+      Swal.close();
+      Swal.fire({
+        icon:'error',
+        title:'Advertencia.....',
+        text:'Ah ocurrido un error al eliminar Producto',
+    });
+    }
+  );
+  }
 
   
 

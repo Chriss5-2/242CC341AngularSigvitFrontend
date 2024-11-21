@@ -5,7 +5,7 @@ export interface IProductoRequest {
     precioVenta:number;
     precioCompra:number;
     stock:number;
-    idCategoria:string;
-    rucProveedor:string;
+    idCategoria:number;
+    rucProveedor:number;
     imagen:string;
 }

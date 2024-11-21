@@ -16,6 +16,13 @@ export class ProductoService {
   }
   registrarProducto(producto:IProductoRequest):Observable<IProductoResponse>{
     console.log(producto);
-    return this.http.post<IProductoResponse>(`${BASE_URL}/producto`,producto);
+    return this.http.post<IProductoResponse>(`${BASE_URL}/producto/insert`,producto);
+  }
+
+  eliminarProducto(producto:IProductoRequest):Observable<IProductoResponse>{
+    console.log(producto);
+    return this.http.delete<IProductoResponse>(`${BASE_URL}/producto/delete`,{
+      body:producto,
+  });
   }
 }
