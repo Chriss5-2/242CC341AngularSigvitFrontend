@@ -5,12 +5,7 @@
       <!--Los-Campos-De-Rellenado-Para-Agregar-Producto-->
       <div class="card-body"> </div>
       <form class="form-group g-4 needs-validation" [formGroup]="productoForm">
-        <div class="row mb-2">
-          <label for="imputIdProducto" class="col-sm-2 col-form-label">Id del Producto:</label>
-          <div class="col-sm-2">
-            <input type="number" class="form-control" id="imputIdProducto" placeholder="Consigne el Id del Producto" formControlName="idProducto">
-          </div>
-        </div>
+        
         <div class="row mb-2">
           <label for="imputDescProducto" class="col-sm-2 col-form-label">Descripcion del Producto:</label>
           <div class="col-sm-4">
@@ -49,14 +44,14 @@
         <div class="row mb-2">
           <label for="imputIdCategoria" class="col-sm-2 col-form-label">IdCategoria: <br>(Vino-1, Pisco-2)</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="imputIdCategoria" placeholder="Consigne la Categoria del Producto (Vino-1 , Pisco-2)" formControlName="idCategoria">
+            <input type="number" class="form-control" id="imputIdCategoria" placeholder="Consigne la Categoria del Producto (Vino-1 , Pisco-2)" formControlName="idCategoria">
           </div>
         </div>
         
         <div class="row mb-2">
           <label for="imputRucProveedor" class="col-sm-2 col-form-label">Ruc del Proveedor:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="imputRucProveedor" placeholder="Consigne el Ruc del Proveedor" formControlName="rucProveedor">
+            <input type="number" class="form-control" id="imputRucProveedor" placeholder="Consigne el Ruc del Proveedor" formControlName="rucProveedor">
           </div>
         </div>
 

@@ -23,7 +23,6 @@ export class RegistrarProductoComponent {
 
   constructor(private productoService:ProductoService){
     this.productoForm = new FormGroup({
-      idProducto: new FormControl('1'),
       descripcion: new FormControl('', [Validators.required,Validators.minLength(2)]),
       nombre: new FormControl('', [Validators.required,Validators.minLength(2)]),
       precioVenta: new FormControl('1',[Validators.required, Validators.min(1)]),
@@ -46,7 +45,6 @@ export class RegistrarProductoComponent {
     });
   }
   setProducto():void{
-    this.productoRequest.idProducto=this.productoForm.get('idProducto')?.value;
     this.productoRequest.descripcion=this.productoForm.get('descripcion')?.value;
     this.productoRequest.nombre=this.productoForm.get('nombre')?.value;
     this.productoRequest.precioVenta=this.productoForm.get('precioVenta')?.value;
