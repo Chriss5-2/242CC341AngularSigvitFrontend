@@ -2,17 +2,19 @@ import { Component } from '@angular/core';
 import { ProductoService } from '../../service/producto.service';
 import { IProductoResponse } from '../../model/producto-response';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-registrar-producto',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgxPaginationModule],
   templateUrl: './registrar-producto.component.html',
   styleUrl: './registrar-producto.component.css'
 })
 export class RegistrarProductoComponent {
-  title = '242CC341AAngularSiRegistrarProductoComponentgconFrontend';
+  title = 'Registrar Producto';
   productoArray: IProductoResponse[]=[];
+  page:number=1;
   constructor(private productoService:ProductoService){}
   ngOnInit():void{
     this.getProductos();
