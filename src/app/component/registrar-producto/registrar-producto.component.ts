@@ -27,4 +27,10 @@ export class RegistrarProductoComponent {
     });
   }
 
+  editarProducto(productoResponse: IProductoResponse):void{console.log('editando persona');}
+
+  eliminarProducto(productoResponse: IProductoResponse):void{console.log('eliminando producto')}
+
+  
+
 }
