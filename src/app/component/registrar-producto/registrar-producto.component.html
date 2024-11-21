@@ -59,8 +59,18 @@
             <input type="text" class="form-control" id="imputNomProveedor" placeholder="Consigne el Nombre del Proveedor" formControlName="nombreProveedor">
           </div>
         </div>
+
+        <div class="row mb-2">
+          <label for="imputImagen" class="col-sm-2 col-form-label">Link de la imagen:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="imputImagen" placeholder="Consigne el Link de la imagen del Producto" formControlName="imagen">
+          </div>
+        </div>
+
         <div class="row m-2 col-sm-1">
-          <button type="submit" class="btn btn-primary">Registrar</button>
+          <button type="submit" class="btn btn-primary"
+          (click)="registrarProducto()"
+          >Registrar</button>
         </div>
         
       </form>
@@ -75,18 +85,20 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Imagen</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">NombreProducto</th>
                     <th scope="col">PrecioVenta</th>
                     <th scope="col">Stock</th>
                     <th scope="col">categoriaNombre</th>
                     <th scope="col">CategoriaDescripcion</th>
-                    <th scope="col">NombreProveedor</th>
+                    <th scope="col">Proveedor</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let producto of productoArray | paginate: {itemsPerPage:10, currentPage:page}; let i=index">
                   <td>{{producto.idProducto}}</td>
+                  <td><img [src]="producto.imagen" alt="Imagen del Producto" style="width: 100px; height: auto;"></td>
                   <td>{{producto.descripcion}}</td>
                   <td>{{producto.nombre}}</td>
                   <td>{{producto.precioVenta}}</td>

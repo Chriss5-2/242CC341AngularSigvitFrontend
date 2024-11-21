@@ -7,5 +7,6 @@ export interface IProductoResponse {
     categoriaNombre:string;
     categoriaDescripcion:string;
     nombreProveedor:string;
+    imagen:string;
 }
 

@@ -21,11 +21,14 @@ export class RegistrarProductoComponent {
   constructor(private productoService:ProductoService){
     this.productoForm = new FormGroup({
       idProducto: new FormControl(''),
+      descripcion: new FormControl('', [Validators.required,Validators.minLength(2)]),
       nombre: new FormControl('', [Validators.required,Validators.minLength(2)]),
       precioVenta: new FormControl(''),
       stock: new FormControl(''),
       categoriaNombre: new FormControl('', [Validators.required,Validators.minLength(2)]),
       categoriaDescripcion: new FormControl('', [Validators.required,Validators.minLength(2)]),
+      nombreProveedor: new FormControl('', [Validators.required,Validators.minLength(2)]),
+      imagen: new FormControl('', [Validators.required,Validators.minLength(2)]),
     });
   }
   ngOnInit():void{
@@ -38,6 +41,8 @@ export class RegistrarProductoComponent {
       console.log(this.productoArray);
     });
   }
+
+  registrarProducto():void{console.log('registrando Producto');}
 
   editarProducto(productoResponse: IProductoResponse):void{console.log('editando persona');}
 
