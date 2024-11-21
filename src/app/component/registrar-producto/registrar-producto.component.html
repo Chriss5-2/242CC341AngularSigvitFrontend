@@ -33,6 +33,13 @@
         </div>
 
         <div class="row mb-2">
+          <label for="imputPrecioCompra" class="col-sm-2 col-form-label">Precio de Compra:</label>
+          <div class="col-sm-2">
+            <input type="number" class="form-control" id="imputPrecioCompra" placeholder="Consigne el precio de compra del producto" formControlName="precioCompra">
+          </div>
+        </div>
+
+        <div class="row mb-2">
           <label for="imputStock" class="col-sm-2 col-form-label">Stock:</label>
           <div class="col-sm-2">
             <input type="number" class="form-control" id="imputStock" placeholder="Consigne el stock del producto" formControlName="stock">
@@ -40,23 +47,16 @@
         </div>
 
         <div class="row mb-2">
-          <label for="imputCategoriaNombre" class="col-sm-2 col-form-label">Categoria:</label>
+          <label for="imputIdCategoria" class="col-sm-2 col-form-label">IdCategoria: <br>(Vino-1, Pisco-2)</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="imputCategoriaNombre" placeholder="Consigne la Categoria del Producto" formControlName="categoriaNombre">
-          </div>
-        </div>
-
-        <div class="row mb-2">
-          <label for="imputCategoriaDescripcion" class="col-sm-2 col-form-label">Descripcion de Categoria:</label>
-          <div class="col-sm-4">
-            <input type="text" class="form-control" id="imputCategoriaDescripcion" placeholder="Consigne la Descripcion del Producto" formControlName="categoriaDescripcion">
+            <input type="text" class="form-control" id="imputIdCategoria" placeholder="Consigne la Categoria del Producto (Vino-1 , Pisco-2)" formControlName="idCategoria">
           </div>
         </div>
         
         <div class="row mb-2">
-          <label for="imputNomProveedor" class="col-sm-2 col-form-label">Nombre del Proveedor:</label>
+          <label for="imputRucProveedor" class="col-sm-2 col-form-label">Ruc del Proveedor:</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="imputNomProveedor" placeholder="Consigne el Nombre del Proveedor" formControlName="nombreProveedor">
+            <input type="text" class="form-control" id="imputRucProveedor" placeholder="Consigne el Ruc del Proveedor" formControlName="rucProveedor">
           </div>
         </div>
 
