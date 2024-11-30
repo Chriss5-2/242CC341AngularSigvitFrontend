@@ -37,6 +37,7 @@ export class RegistrarProductoComponent {
   
   ngOnInit():void{
     this.productoForm.reset();
+    //se usaria this.productoForm.controls['idProducto'].setValue(1); en caso se active esa casilla con ese valor
     this.getProductos();
   }
   getProductos():void{
@@ -88,24 +89,45 @@ export class RegistrarProductoComponent {
     console.log('eliminando producto');
     this.productoRequest.idProducto=productoResponse.idProducto;
 
-    this.productoService.eliminarProducto(this.productoRequest).subscribe((result: any)=>{
-      console.log('eliminarProducto', result),
-      this.ngOnInit();
-      Swal.close();
-      Swal.fire({
-        icon:'success',
-        title:'eliminarProducto....',
-        text:'Se elimino existosamente el producto',
+    Swal.fire({
+      title: "Seguro que quiere eliminar este producto?",
+      text: "Este proceso no es reversible",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar producto"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Realizar la eliminación solo si el usuario confirma
+        this.productoService.eliminarProducto(this.productoRequest).subscribe(
+          (result: any) => {
+            console.log('eliminarProducto', result);
+            this.ngOnInit(); // Actualizar la vista
+            Swal.fire({
+              title: "Eliminado",
+              text: "Tu producto fue eliminado",
+              icon: "success"
+            });
+          },
+          (err: any) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Advertencia.....',
+              text: 'Ah ocurrido un error al eliminar Producto',
+            });
+          }
+        );
+      } else {
+        // El usuario canceló la acción
+        Swal.fire({
+          title: "Cancelled",
+          text: "El producto no se eliminó.",
+          icon: "info"
+        });
+      }
     });
-    },(err:any)=>{
-      Swal.close();
-      Swal.fire({
-        icon:'error',
-        title:'Advertencia.....',
-        text:'Ah ocurrido un error al eliminar Producto',
-    });
-    }
-  );
+    
   }
 
   
